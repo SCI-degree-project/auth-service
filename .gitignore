@@ -73,3 +73,4 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # === Firebase / Auth0 / sensitive files ===
 firebase.json
 auth0.config.json
+src/config/firebase-service-account.json
