@@ -30,7 +30,7 @@ export class UsersService {
       email: payload.email,
       name: payload.name || '',
       role: payload.role,
-      tenantId: payload.tenantId,
+      store: { id: payload.tenantId },
     });
 
     return this.userRepo.save(user);
@@ -48,7 +48,7 @@ export class UsersService {
       email: payload.email,
       name: payload.name || '',
       role: payload.role,
-      tenantId: payload.tenantId,
+      store: { id: payload.tenantId },
     });
 
     return await this.userRepo.save(user);

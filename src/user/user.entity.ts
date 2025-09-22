@@ -4,8 +4,11 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Role } from './user-role';
+import { Store } from 'src/store/store.entity';
 
 @Entity('users')
 export class User {
@@ -27,12 +30,19 @@ export class User {
   })
   role: Role;
 
-  @Column('uuid')
-  tenantId: string;
-
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @ManyToOne(() => Store, store => store.owners, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn({ name: 'storeId' })
+  store: Store;
+
+  @Column('uuid')
+  storeId: string;
 }
